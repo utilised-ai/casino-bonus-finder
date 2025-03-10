@@ -2,22 +2,29 @@
 
 /* ========== Base Styles ========== */
 :root {
-    /* Luxurious Color Palette */
-    --primary-color: #b8860b; /* Dark goldenrod */
-    --secondary-color: #1e3a5f; /* Deep navy blue */
-    --accent-color: #d4af37; /* Metallic gold */
-    --dark-bg: #0f1620; /* Deep rich dark blue */
-    --darker-bg: #080d14; /* Even darker blue */
-    --light-text: #f9f9f9; /* Almost white */
-    --muted-text: #c5c5c5; /* Light silver */
+    /* Ultra-Luxurious Color Palette */
+    --primary-color: #c9a44b; /* Rich premium gold */
+    --secondary-color: #1c2c4c; /* Deep royal blue */
+    --accent-color: #e5c463; /* Brilliant gold */
+    --dark-bg: #0c121a; /* Deep rich dark blue */
+    --darker-bg: #060a10; /* Even darker blue */
+    --light-text: #ffffff; /* Pure white */
+    --muted-text: #d8d8d8; /* Brighter silver */
     
     /* Premium Casino Theme Colors */
-    --casino-red: #9e1a1a; /* Rich burgundy */
-    --casino-gold: #d4af37; /* Metallic gold */
+    --casino-red: #b41a1a; /* Rich casino red */
+    --casino-gold: #e5c463; /* Luxurious gold */
     --casino-black: #000000; /* True black */
     --casino-green: #1a472a; /* Deep emerald */
-    --casino-blue: #1e3a5f; /* Deep navy */
+    --casino-blue: #1c2c4c; /* Royal blue */
     --casino-purple: #4b2e83; /* Royal purple */
+    
+    /* Vegas-Inspired Luxury Accents */
+    --gold-gradient: linear-gradient(135deg, #e5c463 0%, #d4af37 50%, #b8860b 100%);
+    --blue-gradient: linear-gradient(135deg, #2a4570 0%, #1c2c4c 100%);
+    --premium-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    --luxury-border: 1px solid rgba(229, 196, 99, 0.3);
+    --card-glow: 0 0 20px rgba(229, 196, 99, 0.15);
 }
 
 * {
@@ -28,12 +35,16 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
-    color: var(--light-text);
     background-color: var(--dark-bg);
+    color: var(--light-text);
     line-height: 1.6;
     overflow-x: hidden;
-    position: relative;
-    letter-spacing: 0.3px;
+    background-image: 
+        radial-gradient(circle at 20% 25%, rgba(229, 196, 99, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 75% 80%, rgba(229, 196, 99, 0.03) 0%, transparent 50%),
+        linear-gradient(to bottom, var(--dark-bg), var(--darker-bg), var(--dark-bg));
+    background-attachment: fixed;
+    background-size: 100% 100%;
 }
 
 h1, h2, h3, h4 {
@@ -43,41 +54,151 @@ h1, h2, h3, h4 {
 }
 
 .container {
-    width: 100%;
-    max-width: 1200px;
+    width: 90%;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 20px;
+    position: relative;
 }
 
 /* ========== Header & Hero Section ========== */
 header {
-    background: linear-gradient(to right, var(--darker-bg), var(--dark-bg));
+    background: var(--blue-gradient);
     position: relative;
     overflow: hidden;
+    border-bottom: 2px solid rgba(229, 196, 99, 0.3);
+}
+
+.top-bar {
+    background-color: rgba(6, 10, 16, 0.95);
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(229, 196, 99, 0.15);
+}
+
+.top-bar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.currency-selection select {
+    background-color: transparent;
+    color: var(--muted-text);
+    border: 1px solid rgba(229, 196, 99, 0.3);
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.top-links {
+    display: flex;
+    gap: 20px;
+}
+
+.top-links a {
+    color: var(--muted-text);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.top-links a:hover {
+    color: var(--accent-color);
+}
+
+.top-links a i {
+    color: var(--accent-color);
 }
 
 .hero {
     padding: 150px 20px;
     text-align: center;
-    background-image: url('https://images.unsplash.com/photo-1596838132731-3301c3fd4466?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
-    background-size: cover;
-    background-position: center;
+    background: url('https://images.unsplash.com/photo-1596838132731-3301c3fd4466?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
     position: relative;
+    background-attachment: fixed;
 }
 
 .hero::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(8, 13, 20, 0.85);
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(6, 10, 16, 0.95) 0%, rgba(12, 18, 26, 0.8) 100%);
+    z-index: 1;
 }
 
 .hero > * {
     position: relative;
-    z-index: 1;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+    letter-spacing: 1.5px;
+    line-height: 1.2;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero p {
+    color: var(--muted-text);
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+}
+
+.featured-casinos {
+    margin-top: 60px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px 20px;
+    border-radius: 50px;
+    border: 1px solid rgba(229, 196, 99, 0.2);
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: var(--premium-shadow);
+}
+
+.featured-text {
+    font-size: 0.8rem;
+    color: var(--muted-text);
+    letter-spacing: 1.5px;
+}
+
+.casino-logos {
+    display: flex;
+    gap: 25px;
+}
+
+.casino-logo-item {
+    color: var(--accent-color);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    position: relative;
+    padding-left: 15px;
+}
+
+.casino-logo-item:not(:last-child):after {
+    content: "•";
+    position: absolute;
+    right: -15px;
+    color: rgba(229, 196, 99, 0.5);
 }
 
 .logo-container {
@@ -113,84 +234,78 @@ header {
     color: var(--accent-color);
 }
 
-.hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 25px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    line-height: 1.2;
-}
-
-.hero p {
-    font-size: 1.3rem;
-    margin-bottom: 40px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    color: var(--muted-text);
-}
-
 .cta-buttons {
     display: flex;
-    gap: 20px;
     justify-content: center;
-    margin-top: 50px;
+    gap: 20px;
+    margin-top: 40px;
 }
 
 .btn {
-    display: inline-block;
-    padding: 16px 32px;
-    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 30px;
     font-weight: 600;
     text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    transition: all 0.3s ease;
+    border-radius: 4px;
     position: relative;
     overflow: hidden;
+    transition: all 0.4s ease;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
     z-index: 1;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    min-width: 200px;
+    box-shadow: var(--premium-shadow);
 }
 
 .btn::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100%;
     background: rgba(255, 255, 255, 0.1);
-    transition: all 0.4s ease;
+    transition: all 0.5s ease;
     z-index: -1;
 }
 
 .btn:hover::before {
-    left: 0;
+    left: 100%;
+}
+
+.btn-icon {
+    margin-right: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .btn.primary {
-    background-color: var(--accent-color);
+    background: var(--gold-gradient);
     color: var(--darker-bg);
-    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-    border: 1px solid var(--accent-color);
+    border: none;
+    transform: translateY(0);
+    box-shadow: 0 5px 15px rgba(229, 196, 99, 0.3);
 }
 
 .btn.secondary {
     background-color: transparent;
     color: var(--accent-color);
     border: 1px solid var(--accent-color);
-    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .btn.primary:hover {
-    box-shadow: 0 7px 20px rgba(212, 175, 55, 0.4);
     transform: translateY(-3px);
-    background-color: #e6c44d;
+    box-shadow: 0 8px 25px rgba(229, 196, 99, 0.4);
 }
 
 .btn.secondary:hover {
-    background-color: rgba(212, 175, 55, 0.1);
-    box-shadow: 0 7px 20px rgba(212, 175, 55, 0.2);
+    background-color: rgba(229, 196, 99, 0.1);
     transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
 /* Chips Animation */
@@ -326,42 +441,42 @@ header {
 
 /* ========== Navigation ========== */
 .main-nav {
-    background-color: var(--darker-bg);
+    background-color: rgba(6, 10, 16, 0.95);
     padding: 15px 0;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid rgba(229, 196, 99, 0.15);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .main-nav ul {
+    list-style: none;
     display: flex;
     justify-content: center;
-    list-style: none;
-    gap: 30px;
+    gap: 40px;
 }
 
 .main-nav a {
-    color: var(--muted-text);
     text-decoration: none;
-    font-weight: 600;
-    font-size: 1.05rem;
-    padding: 10px 5px;
+    color: var(--muted-text);
+    font-weight: 500;
     position: relative;
-    transition: all 0.3s ease;
-    letter-spacing: 0.8px;
+    padding: 8px 5px;
+    transition: color 0.3s ease;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
     text-transform: uppercase;
 }
 
 .main-nav a::after {
-    content: '';
+    content: "";
     position: absolute;
-    bottom: 0;
     left: 0;
+    bottom: 0;
     width: 0;
     height: 2px;
-    background-color: var(--accent-color);
+    background: var(--gold-gradient);
     transition: width 0.3s ease;
 }
 
@@ -376,50 +491,91 @@ header {
 /* ========== Features Section ========== */
 .features {
     padding: 80px 0;
-    background-color: var(--darker-bg);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background: linear-gradient(180deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+    position: relative;
+    border-bottom: 1px solid rgba(229, 196, 99, 0.1);
+}
+
+.features::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e5c463' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.4;
+    z-index: 0;
 }
 
 .features .container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
+    gap: 30px;
+    position: relative;
+    z-index: 1;
 }
 
 .feature {
     text-align: center;
-    padding: 35px 25px;
-    border-radius: 8px;
-    background: rgba(30, 58, 95, 0.1);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid rgba(212, 175, 55, 0.05);
+    padding: 40px 30px;
+    border-radius: 6px;
+    background: linear-gradient(145deg, rgba(28, 44, 76, 0.2), rgba(6, 10, 16, 0.5));
+    box-shadow: var(--premium-shadow);
+    transition: all 0.4s ease;
+    border: var(--luxury-border);
+    position: relative;
+    overflow: hidden;
+}
+
+.feature::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--gold-gradient);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+    transform-origin: left;
 }
 
 .feature:hover {
     transform: translateY(-10px);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(212, 175, 55, 0.1);
+    border-color: rgba(229, 196, 99, 0.3);
+    background: linear-gradient(145deg, rgba(28, 44, 76, 0.3), rgba(6, 10, 16, 0.6));
+}
+
+.feature:hover::before {
+    transform: scaleX(1);
 }
 
 .feature-icon {
     font-size: 2.5rem;
     margin-bottom: 25px;
-    color: var(--accent-color);
-    background: linear-gradient(45deg, var(--accent-color), #f5deb3);
+    background: var(--gold-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    display: inline-block;
+    filter: drop-shadow(0 2px 4px rgba(229, 196, 99, 0.2));
 }
 
 .feature h3 {
     font-size: 1.5rem;
     margin-bottom: 15px;
     color: var(--light-text);
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 0.5px;
 }
 
 .feature p {
     color: var(--muted-text);
+    font-size: 1rem;
+    line-height: 1.6;
 }
 
 /* ========== Offers Sections ========== */
@@ -429,11 +585,11 @@ header {
 }
 
 .offers-section:nth-child(odd) {
-    background-color: var(--dark-bg);
+    background: linear-gradient(to bottom, var(--dark-bg), var(--darker-bg));
 }
 
 .offers-section:nth-child(even) {
-    background-color: var(--darker-bg);
+    background: linear-gradient(to bottom, var(--darker-bg), var(--dark-bg));
 }
 
 .section-header {
@@ -441,231 +597,461 @@ header {
     align-items: center;
     justify-content: center;
     margin-bottom: 50px;
-    gap: 20px;
+    gap: 25px;
+    position: relative;
+}
+
+.section-header::before {
+    content: "";
+    position: absolute;
+    width: 60%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(229, 196, 99, 0.3), transparent);
+    bottom: -15px;
 }
 
 .dice-decoration {
     width: 30px;
     height: 30px;
-    background-color: var(--accent-color);
+    background: var(--gold-gradient);
     border-radius: 5px;
     position: relative;
-    box-shadow: 0 2px 10px rgba(212, 175, 55, 0.2);
+    box-shadow: 0 0 15px rgba(229, 196, 99, 0.3);
+    transform: rotate(45deg);
 }
 
 .dice-decoration::before,
 .dice-decoration::after {
     content: '';
     position: absolute;
-    background-color: var(--dark-bg);
+    background-color: var(--darker-bg);
     border-radius: 50%;
 }
 
 .dice-decoration::before {
     width: 6px;
     height: 6px;
-    top: 5px;
-    left: 5px;
+    top: 7px;
+    left: 7px;
 }
 
 .dice-decoration::after {
     width: 6px;
     height: 6px;
-    bottom: 5px;
-    right: 5px;
+    bottom: 7px;
+    right: 7px;
 }
 
 .section-header h2 {
+    font-family: 'Playfair Display', serif;
     font-size: 2.8rem;
     color: var(--light-text);
-    position: relative;
+    font-weight: 700;
     text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    position: relative;
+    letter-spacing: 1px;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
 }
 
 .section-intro {
     text-align: center;
     max-width: 800px;
-    margin: 0 auto 70px;
+    margin: 0 auto 50px;
     color: var(--muted-text);
     font-size: 1.1rem;
-    line-height: 1.8;
+    line-height: 1.7;
+    position: relative;
 }
 
 .offers-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 50px;
+    margin-top: 40px;
 }
 
 .offer-card {
-    background: linear-gradient(135deg, rgba(30, 58, 95, 0.3), rgba(8, 13, 20, 0.9));
-    border-radius: 8px;
+    background: linear-gradient(145deg, rgba(28, 44, 76, 0.3), rgba(6, 10, 16, 0.5));
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
     position: relative;
-    border: 1px solid rgba(212, 175, 55, 0.05);
+    z-index: 1;
+    border: var(--luxury-border);
+    box-shadow: var(--premium-shadow);
+    display: flex;
+    flex-direction: column;
+    min-height: 520px;
+    backdrop-filter: blur(5px);
+}
+
+.offer-card::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(229, 196, 99, 0.1) 0%, transparent 70%);
+    border-radius: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.offer-card:hover::after {
+    opacity: 1;
 }
 
 .offer-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
-    border: 1px solid rgba(212, 175, 55, 0.15);
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: var(--card-glow), 0 25px 50px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(229, 196, 99, 0.5);
+    z-index: 2;
 }
 
 .offer-card::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 5px;
-    background: linear-gradient(90deg, var(--accent-color), var(--casino-gold));
+    height: 100%;
+    background: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23e5c463' fill-opacity='0.02' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+    z-index: -1;
+    opacity: 0.5;
 }
 
 .offer-card.trending::after {
-    content: 'HOT OFFER';
+    display: none;
+}
+
+/* Keep the pulsing border effect for trending cards, but remove the ribbon */
+.offer-card.trending {
+    overflow: visible;
+    position: relative;
+    border: 1px solid rgba(229, 196, 99, 0.4);
+    animation: trendingPulse 3s infinite;
+}
+
+.offer-card.trending .card-header,
+.offer-card.trending .card-body,
+.offer-card.trending .card-footer {
+    overflow: hidden;
+}
+
+.offer-card.trending::before {
+    content: "";
     position: absolute;
-    top: 20px;
-    right: -35px;
-    background-color: var(--casino-red);
-    color: white;
-    padding: 5px 40px;
-    transform: rotate(45deg);
-    font-size: 0.8rem;
-    font-weight: bold;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    z-index: 10;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23e5c463' fill-opacity='0.03' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+    z-index: -1;
+    opacity: 0.6;
+}
+
+.offer-card.trending .card-header::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: rgba(229, 196, 99, 0.3);
+    border-radius: 50%;
+    top: 50px;
+    left: 15px;
+    filter: blur(5px);
+    animation: sparkle 4s infinite;
+}
+
+.offer-card.trending .card-header::after {
+    animation: glowBorder 3s infinite;
+}
+
+.offer-card.trending .card-footer::before {
+    animation: glowBorder 3s infinite 1.5s;
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.5);
+    }
+}
+
+@keyframes glowBorder {
+    0%, 100% {
+        background: linear-gradient(90deg, transparent, rgba(229, 196, 99, 0.3), transparent);
+    }
+    50% {
+        background: linear-gradient(90deg, transparent, rgba(229, 196, 99, 0.6), transparent);
+    }
 }
 
 .card-header {
-    padding: 25px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 30px 35px;
+    border-bottom: 1px solid rgba(229, 196, 99, 0.1);
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    background: rgba(6, 10, 16, 0.5);
+    position: relative;
+}
+
+.card-header::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(229, 196, 99, 0.3), transparent);
 }
 
 .casino-logo {
-    width: 80px;
-    height: 80px;
+    height: 75px;
+    width: 75px;
+    object-fit: contain;
     border-radius: 10px;
-    margin-right: 15px;
-    object-fit: cover;
-    border: 1px solid rgba(212, 175, 55, 0.2);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(229, 196, 99, 0.15);
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.offer-card:hover .casino-logo {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(229, 196, 99, 0.15);
+}
+
+.card-title {
+    flex: 1;
+    padding-left: 25px;
 }
 
 .card-title h3 {
-    font-size: 1.4rem;
-    margin-bottom: 8px;
+    font-size: 1.5rem;
     color: var(--light-text);
+    margin-bottom: 10px;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 0.5px;
 }
 
 .card-title .rating {
     display: flex;
     align-items: center;
-    gap: 2px;
+    gap: 7px;
     color: var(--accent-color);
+    font-size: 1.1rem;
 }
 
 .card-body {
-    padding: 25px;
+    padding: 35px;
+    background: linear-gradient(to bottom, rgba(12, 18, 26, 0.3), rgba(6, 10, 16, 0.1));
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .bonus-description {
-    font-size: 1.6rem;
+    font-size: 2rem;
     font-weight: 700;
-    color: var(--accent-color);
-    margin-bottom: 20px;
-    line-height: 1.4;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 30px;
+    line-height: 1.3;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    text-align: center;
+    padding: 0 10px;
+    position: relative;
+}
+
+.bonus-description::after {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 2px;
+    background: var(--gold-gradient);
+    border-radius: 2px;
 }
 
 .bonus-details {
-    margin-bottom: 25px;
+    list-style: none;
+    margin-bottom: 35px;
 }
 
 .bonus-details li {
-    margin-bottom: 12px;
-    position: relative;
-    padding-left: 25px;
-    list-style: none;
     color: var(--muted-text);
+    margin-bottom: 18px;
+    padding-left: 35px;
+    position: relative;
+    font-size: 1.05rem;
+    line-height: 1.6;
 }
 
 .bonus-details li::before {
-    content: '✓';
+    content: "✓";
     position: absolute;
     left: 0;
     color: var(--accent-color);
     font-weight: bold;
+    font-size: 1.2rem;
 }
 
 .card-footer {
-    padding: 20px 25px;
+    padding: 30px 35px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.2);
-    border-top: 1px solid rgba(212, 175, 55, 0.05);
+    flex-direction: column;
+    gap: 20px;
+    border-top: 1px solid rgba(229, 196, 99, 0.1);
+    background: rgba(6, 10, 16, 0.4);
+    position: relative;
+}
+
+.card-footer::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(229, 196, 99, 0.3), transparent);
 }
 
 .promo-code {
-    background-color: rgba(212, 175, 55, 0.1);
-    padding: 8px 15px;
-    border-radius: 4px;
-    font-family: monospace;
-    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.promo-code code {
+    background: rgba(229, 196, 99, 0.1);
+    color: var(--accent-color);
+    padding: 15px;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1.5px;
+    font-size: 1.1rem;
+    border: 1px dashed rgba(229, 196, 99, 0.4);
+    position: relative;
+    flex: 1;
+    text-align: center;
+    font-weight: 600;
+}
+
+.promo-code button {
+    background: none;
+    border: none;
     color: var(--light-text);
-    border: 1px solid rgba(212, 175, 55, 0.2);
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 15px;
+    background: rgba(229, 196, 99, 0.1);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(229, 196, 99, 0.2);
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.promo-code button:hover {
+    background: rgba(229, 196, 99, 0.2);
+    color: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+.card-footer .btn {
+    margin-top: 5px;
+    height: 55px;
+    font-size: 1.1rem;
+    background: var(--gold-gradient);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.card-footer .btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+}
+
+.card-footer .btn:hover::after {
+    transform: translateX(100%);
 }
 
 .link-arrow {
-    font-size: 1.5rem;
     color: var(--accent-color);
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+    font-size: 1.1rem;
+}
+
+.btn:hover .link-arrow {
+    transform: translateX(5px);
 }
 
 .offer-updated {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background-color: rgba(212, 175, 55, 0.2);
-    color: var(--accent-color);
-    font-size: 0.75rem;
-    padding: 3px 8px;
-    border-radius: 4px;
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: var(--muted-text);
+    background: rgba(229, 196, 99, 0.05);
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+    border: 1px solid rgba(229, 196, 99, 0.1);
+    justify-content: center;
 }
 
 .live-dot {
     display: inline-block;
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     background-color: #4CAF50;
     border-radius: 50%;
     animation: pulse 2s infinite;
+    margin-right: 5px;
 }
 
 @keyframes pulse {
     0% {
-        transform: scale(0.95);
         box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
     }
-    
     70% {
-        transform: scale(1);
-        box-shadow: 0 0 0 7px rgba(76, 175, 80, 0);
+        box-shadow: 0 0 0 10px rgba(76, 175, 80, 0);
     }
-    
     100% {
-        transform: scale(0.95);
         box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
     }
 }
 
+/* ========== Search Animation ========== */
 .search-animation {
     display: flex;
     justify-content: center;
@@ -720,6 +1106,354 @@ header {
     }
     100% {
         width: 100%;
+    }
+}
+
+/* ========== Algorithm Visualization ========== */
+.algorithm-visualization {
+    margin: 30px auto 50px;
+    width: 95%;
+    max-width: 1200px;
+    background: linear-gradient(145deg, rgba(28, 44, 76, 0.8), rgba(6, 10, 16, 0.9));
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(229, 196, 99, 0.1);
+    border: 2px solid rgba(229, 196, 99, 0.3);
+    padding: 35px;
+    position: relative;
+    overflow: hidden;
+    transform: translateZ(0);
+}
+
+.algorithm-visualization::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(229, 196, 99, 0.07) 0%, transparent 30%),
+        radial-gradient(circle at 90% 80%, rgba(229, 196, 99, 0.07) 0%, transparent 30%),
+        url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23e5c463' fill-opacity='0.03' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+}
+
+.algorithm-visualization::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+    background: conic-gradient(
+        from 215deg at 50% 50%,
+        rgba(229, 196, 99, 0) 0deg,
+        rgba(229, 196, 99, 0.1) 30deg,
+        rgba(229, 196, 99, 0.1) 60deg,
+        rgba(229, 196, 99, 0) 90deg,
+        rgba(229, 196, 99, 0) 360deg
+    );
+    z-index: -1;
+    animation: rotateGradient 10s linear infinite;
+}
+
+@keyframes rotateGradient {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.algorithm-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(229, 196, 99, 0.3);
+    position: relative;
+}
+
+.algorithm-header::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100px;
+    height: 3px;
+    background: var(--gold-gradient);
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    color: var(--light-text);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: rgba(6, 10, 16, 0.5);
+    padding: 8px 15px;
+    border-radius: 4px;
+    border: 1px solid rgba(229, 196, 99, 0.2);
+}
+
+.status-indicator .live-dot {
+    margin-right: 10px;
+    width: 12px;
+    height: 12px;
+}
+
+.timestamp {
+    color: var(--light-text);
+    font-size: 0.95rem;
+    background: rgba(6, 10, 16, 0.5);
+    padding: 8px 15px;
+    border-radius: 4px;
+    border: 1px solid rgba(229, 196, 99, 0.2);
+    display: flex;
+    align-items: center;
+}
+
+.timestamp::before {
+    content: "\f017"; /* Clock icon */
+    font-family: "Font Awesome 5 Free";
+    color: var(--accent-color);
+    margin-right: 8px;
+}
+
+.algorithm-display {
+    position: relative;
+    z-index: 1;
+}
+
+.algorithm-metrics {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 35px;
+}
+
+.metric {
+    text-align: center;
+    padding: 25px 20px;
+    background: linear-gradient(145deg, rgba(28, 44, 76, 0.3), rgba(6, 10, 16, 0.6));
+    border-radius: 12px;
+    border: 1px solid rgba(229, 196, 99, 0.2);
+    min-width: 150px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.metric::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gold-gradient);
+    opacity: 0.8;
+}
+
+.metric-label {
+    color: var(--muted-text);
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    display: inline-block;
+}
+
+.metric-value {
+    color: var(--accent-color);
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-shadow: 0 0 15px rgba(229, 196, 99, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.metric-value.updating {
+    color: var(--casino-gold);
+    transform: scale(1.1);
+    text-shadow: 0 0 25px rgba(229, 196, 99, 0.6);
+}
+
+.algorithm-progress {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 35px;
+    position: relative;
+    background: linear-gradient(145deg, rgba(28, 44, 76, 0.2), rgba(6, 10, 16, 0.3));
+    padding: 30px 40px;
+    border-radius: 12px;
+    border: 1px solid rgba(229, 196, 99, 0.15);
+}
+
+.algorithm-progress::before {
+    content: "";
+    position: absolute;
+    top: 38px;
+    left: 60px;
+    right: 60px;
+    height: 3px;
+    background: linear-gradient(to right, 
+        rgba(229, 196, 99, 1) 25%, 
+        rgba(229, 196, 99, 1) 25%, 
+        rgba(229, 196, 99, 1) 50%, 
+        rgba(229, 196, 99, 1) 50%, 
+        rgba(229, 196, 99, 1) 75%, 
+        rgba(229, 196, 99, 1) 75%, 
+        rgba(229, 196, 99, 1) 100%
+    );
+    z-index: 1;
+    box-shadow: 0 0 10px rgba(229, 196, 99, 0.3);
+    animation: progressPulse 2s infinite;
+}
+
+@keyframes progressPulse {
+    0% {
+        opacity: 0.7;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.7;
+    }
+}
+
+.algo-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 22%;
+    position: relative;
+    opacity: 0.5;
+    transition: all 0.4s ease;
+    z-index: 2;
+}
+
+.algo-stage.active {
+    opacity: 1;
+}
+
+.stage-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(145deg, rgba(28, 44, 76, 0.8), rgba(6, 10, 16, 0.9));
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 0 20px rgba(229, 196, 99, 0.3);
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.algo-stage.active .stage-icon {
+    animation: pulse 2s infinite;
+    background: var(--gold-gradient);
+    color: var(--darker-bg);
+}
+
+.stage-label {
+    color: var(--light-text);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-align: center;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.stage-status {
+    color: var(--accent-color);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: rgba(6, 10, 16, 0.4);
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(229, 196, 99, 0.15);
+}
+
+.analysis-result {
+    background: linear-gradient(145deg, rgba(28, 44, 76, 0.4), rgba(6, 10, 16, 0.7));
+    padding: 25px;
+    border-radius: 12px;
+    border-left: 4px solid var(--accent-color);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    animation: resultGlow 3s infinite;
+}
+
+@keyframes resultGlow {
+    0% {
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+    50% {
+        box-shadow: 0 10px 30px rgba(229, 196, 99, 0.1);
+    }
+    100% {
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+}
+
+.result-text {
+    color: var(--light-text);
+    font-size: 1.2rem;
+    text-align: center;
+    font-weight: 600;
+    position: relative;
+    padding-left: 30px;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    animation: textGlow 3s infinite;
+}
+
+.result-text::before {
+    content: "✓";
+    color: var(--accent-color);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+    font-size: 1.4rem;
+    animation: checkPulse 2s infinite;
+}
+
+@keyframes checkPulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes textGlow {
+    0% {
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    50% {
+        text-shadow: 0 2px 10px rgba(229, 196, 99, 0.2);
+    }
+    100% {
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     }
 }
 
@@ -1032,34 +1766,69 @@ footer {
 /* ========== Responsive Styles ========== */
 @media (max-width: 1024px) {
     .hero h1 {
-        font-size: 2.8rem;
+        font-size: 3.5rem;
     }
     
     .section-header h2 {
-        font-size: 2.4rem;
-    }
-    
-    .newsletter h3 {
         font-size: 2.2rem;
     }
     
+    .newsletter h3 {
+        font-size: 1.8rem;
+    }
+    
     .faq-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .algorithm-metrics {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    
+    .metric {
+        min-width: 120px;
+        flex: 1;
+    }
+    
+    .offers-grid {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 30px;
+    }
+    
+    .offer-card {
+        min-height: 480px;
+    }
+    
+    .card-header {
+        padding: 25px;
+    }
+    
+    .card-body {
+        padding: 25px;
+    }
+    
+    .card-footer {
+        padding: 25px;
+    }
+    
+    .bonus-description {
+        font-size: 1.7rem;
     }
 }
 
 @media (max-width: 768px) {
     .hero {
-        padding: 100px 20px;
+        padding: 60px 20px;
     }
     
     .hero h1 {
-        font-size: 2.3rem;
+        font-size: 3rem;
     }
     
     .main-nav ul {
+        justify-content: center;
         flex-wrap: wrap;
-        gap: 15px;
     }
     
     .cta-buttons {
@@ -1069,7 +1838,6 @@ footer {
     
     .btn {
         width: 100%;
-        text-align: center;
     }
     
     .offers-grid, .reviews-grid {
@@ -1082,21 +1850,66 @@ footer {
     
     .footer-content {
         flex-direction: column;
-        gap: 40px;
+        text-align: center;
     }
     
     .footer-links {
-        gap: 30px;
+        flex-wrap: wrap;
     }
-
+    
     .search-bar {
         width: 90%;
+    }
+    
+    .algorithm-visualization {
+        padding: 15px;
+        margin: 20px auto 30px;
+    }
+    
+    .algorithm-progress {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+    }
+    
+    .algorithm-progress::before {
+        display: none;
+    }
+    
+    .algo-stage {
+        width: 45%;
+        margin-bottom: 20px;
+    }
+    
+    .algorithm-header {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+    
+    .offer-card {
+        max-width: 450px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .casino-logo {
+        height: 65px;
+        width: 65px;
+    }
+    
+    .card-title h3 {
+        font-size: 1.4rem;
+    }
+    
+    .offer-card.trending::after {
+        display: none;
     }
 }
 
 @media (max-width: 480px) {
     .hero h1 {
-        font-size: 1.9rem;
+        font-size: 2.5rem;
     }
     
     .hero p {
@@ -1104,18 +1917,327 @@ footer {
     }
     
     .section-header h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
     
     .feature {
-        padding: 25px 20px;
+        padding: 15px;
     }
     
     .footer-column {
-        flex: 1 1 100%;
+        width: 100%;
     }
-
+    
     .search-text {
         font-size: 0.9rem;
+    }
+    
+    .algorithm-metrics {
+        flex-direction: column;
+    }
+    
+    .metric {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .algo-stage {
+        width: 100%;
+    }
+    
+    .stage-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .analysis-result {
+        padding: 15px;
+    }
+    
+    .result-text {
+        font-size: 0.95rem;
+        padding-left: 18px;
+    }
+    
+    .card-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .card-title {
+        padding-left: 0;
+    }
+    
+    .casino-logo {
+        margin-bottom: 5px;
+    }
+    
+    .bonus-description {
+        font-size: 1.5rem;
+    }
+    
+    .bonus-details li {
+        padding-left: 25px;
+        font-size: 0.95rem;
+    }
+    
+    .promo-code {
+        flex-direction: column;
+    }
+    
+    .promo-code code {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .offer-card.trending::after {
+        display: none;
+    }
+}
+
+/* ========== Offer Filters ========== */
+.offer-filters {
+    margin: 0 auto 40px;
+    width: 90%;
+    max-width: 1100px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.filter-heading {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: var(--light-text);
+    margin-bottom: 5px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.filter-heading i {
+    color: var(--accent-color);
+    font-size: 1.8rem;
+    filter: drop-shadow(0 0 8px rgba(229, 196, 99, 0.3));
+}
+
+.filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.filter-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 25px;
+    border: 1px solid rgba(229, 196, 99, 0.3);
+    border-radius: 50px;
+    background: linear-gradient(145deg, rgba(12, 18, 26, 0.7), rgba(6, 10, 16, 0.8));
+    color: var(--muted-text);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 200px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.filter-btn i {
+    color: var(--accent-color);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.filter-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(229, 196, 99, 0.1), transparent);
+    transition: width 0.5s ease;
+    z-index: 0;
+}
+
+.filter-btn:hover {
+    color: var(--light-text);
+    border-color: rgba(229, 196, 99, 0.5);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.filter-btn:hover::before {
+    width: 100%;
+}
+
+.filter-btn:hover i {
+    transform: scale(1.2);
+}
+
+.filter-btn.active {
+    background: var(--gold-gradient);
+    color: var(--darker-bg);
+    border-color: var(--accent-color);
+    box-shadow: 0 5px 20px rgba(229, 196, 99, 0.2);
+    font-weight: 700;
+}
+
+.filter-btn.active i {
+    color: var(--darker-bg);
+}
+
+/* Responsive filter buttons */
+@media (max-width: 768px) {
+    .filter-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .filter-btn {
+        width: 100%;
+        justify-content: flex-start;
+    }
+}
+
+/* Add Vegas-style animated lights across the top of the page */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        var(--casino-red) 0%, 
+        var(--casino-gold) 25%, 
+        var(--casino-purple) 50%, 
+        var(--casino-gold) 75%, 
+        var(--casino-red) 100%
+    );
+    z-index: 9999;
+    animation: vegasLights 3s linear infinite;
+}
+
+@keyframes vegasLights {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Add a subtle shine effect to key elements */
+.section-header h2, .algorithm-header, .filter-heading, .btn.primary, .stage-icon {
+    position: relative;
+    overflow: hidden;
+}
+
+.section-header h2::after, .algorithm-header::before, .filter-heading::after, .btn.primary::after, .stage-icon::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(229, 196, 99, 0.1) 0%, transparent 50%);
+    transform: rotate(30deg);
+    animation: shimmerEffect 10s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes shimmerEffect {
+    0% {
+        transform: translateX(-30%) translateY(-30%) rotate(0);
+    }
+    100% {
+        transform: translateX(30%) translateY(30%) rotate(360deg);
+    }
+}
+
+/* Add a subtle pulsing border to trending offers */
+.offer-card.trending {
+    position: relative;
+    overflow: visible;
+    border: 1px solid rgba(229, 196, 99, 0.4);
+    animation: trendingPulse 3s infinite;
+}
+
+@keyframes trendingPulse {
+    0% {
+        border-color: rgba(229, 196, 99, 0.3);
+    }
+    50% {
+        border-color: rgba(229, 196, 99, 0.6);
+    }
+    100% {
+        border-color: rgba(229, 196, 99, 0.3);
+    }
+}
+
+/* Add a luxury transition effect to the entire page */
+.container, section, header, footer {
+    transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* Enhance the hero section with more Vegas flair */
+.hero::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(135deg, rgba(229, 196, 99, 0.05) 0%, transparent 50%),
+        linear-gradient(225deg, rgba(229, 196, 99, 0.05) 0%, transparent 50%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Add subtle spotlight effects */
+.featured-casinos::before {
+    content: "";
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(229, 196, 99, 0.1) 0%, transparent 70%);
+    z-index: 0;
+    animation: spotlightMove 10s ease-in-out infinite;
+}
+
+@keyframes spotlightMove {
+    0% {
+        transform: translateX(-80%);
+    }
+    50% {
+        transform: translateX(80%);
+    }
+    100% {
+        transform: translateX(-80%);
+    }
+}
+
+@keyframes tagPulse {
+    0%, 100% {
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+    }
+    50% {
+        box-shadow: 0 5px 15px rgba(229, 196, 99, 0.4);
     }
 } 

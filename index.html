@@ -3,19 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Casino Bonus Finder | Exclusive Luxury Offers for High Rollers</title>
+    <title>Sovereign Stakes | Exclusive Luxury Casino Offers for Elite Players</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-content">
+                    <div class="currency-selection">
+                        <select id="currency-selector">
+                            <option value="USD">USD ($)</option>
+                            <option value="EUR">EUR (€)</option>
+                            <option value="GBP">GBP (£)</option>
+                        </select>
+                    </div>
+                    <div class="top-links">
+                        <a href="#"><i class="fas fa-user-circle"></i> Member Login</a>
+                        <a href="#"><i class="fas fa-crown"></i> VIP Program</a>
+                        <a href="#"><i class="fas fa-headset"></i> 24/7 Support</a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="hero">
             <div class="logo-container">
                 <div class="logo">
-                    <span class="casino-text">Elite</span>
-                    <span class="bonus-text">Casino</span>
-                    <span class="finder-text">Offers</span>
+                    <div class="logo-emblem">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-primary">SOVEREIGN</span>
+                        <span class="logo-secondary">STAKES</span>
+                    </div>
                 </div>
                 <div class="chips-animation">
                     <div class="chip chip1"></div>
@@ -23,11 +45,20 @@
                     <div class="chip chip3"></div>
                 </div>
             </div>
-            <h1>Exclusive Casino Bonuses for Discerning Players</h1>
-            <p>Access the most prestigious welcome bonuses, VIP free spins, and high-roller no deposit offers carefully curated for sophisticated players.</p>
+            <h1>Exclusive Casino Privileges for Discerning Players</h1>
+            <p>Access the most prestigious welcome bonuses, VIP free spins, and high-roller no deposit offers, meticulously curated for sophisticated connoisseurs of premium gaming.</p>
             <div class="cta-buttons">
-                <a href="#top-offers" class="btn primary">View Premium Offers</a>
-                <a href="#reviews" class="btn secondary">Elite Casino Reviews</a>
+                <a href="#top-offers" class="btn primary"><span class="btn-icon"><i class="fas fa-gem"></i></span> View Premium Offers</a>
+                <a href="#reviews" class="btn secondary"><span class="btn-icon"><i class="fas fa-star"></i></span> Elite Casino Reviews</a>
+            </div>
+            <div class="featured-casinos">
+                <span class="featured-text">FEATURED PARTNERS:</span>
+                <div class="casino-logos">
+                    <div class="casino-logo-item">BetMGM</div>
+                    <div class="casino-logo-item">Caesars</div>
+                    <div class="casino-logo-item">Hard Rock</div>
+                    <div class="casino-logo-item">Bet365</div>
+                </div>
             </div>
         </div>
     </header>
@@ -40,6 +71,7 @@
                 <li><a href="#free-spins">Free Spins</a></li>
                 <li><a href="#welcome-bonus">Welcome Bonus</a></li>
                 <li><a href="#reviews">VIP Reviews</a></li>
+                <li><a href="#vip-club">Sovereign Club</a></li>
             </ul>
         </div>
     </nav>
@@ -50,7 +82,7 @@
                 <div class="feature-icon">
                     <i class="fas fa-gem"></i>
                 </div>
-                <h3>Exclusive VIP Bonuses</h3>
+                <h3>Elite Casino Privileges</h3>
                 <p>Access prestigious deals reserved for high-value players</p>
             </div>
             <div class="feature">
@@ -84,7 +116,74 @@
                 <h2>Premium Casino Offers</h2>
                 <div class="dice-decoration"></div>
             </div>
-            <p class="section-intro">Our team of casino experts continuously analyzes the market to bring you the most exceptional bonus offers. Exclusively updated for high-rollers in March 2024.</p>
+            <div class="algorithm-visualization">
+                <div class="algorithm-header">
+                    <span class="status-indicator"><span class="live-dot"></span> LIVE ANALYSIS</span>
+                    <span class="timestamp">Last Updated: <span id="lastUpdatedTime">March 2024</span></span>
+                </div>
+                <div class="algorithm-display">
+                    <div class="algorithm-metrics">
+                        <div class="metric">
+                            <div class="metric-label">Casinos Analyzed</div>
+                            <div class="metric-value" id="casinosAnalyzed">356</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">Offers Processed</div>
+                            <div class="metric-value" id="offersProcessed">1,248</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">Match Rate</div>
+                            <div class="metric-value" id="matchRate">96.7%</div>
+                        </div>
+                    </div>
+                    <div class="algorithm-progress">
+                        <div class="algo-stage active" data-stage="1">
+                            <div class="stage-icon"><i class="fas fa-database"></i></div>
+                            <div class="stage-label">Data Collection</div>
+                            <div class="stage-status">Complete</div>
+                        </div>
+                        <div class="algo-stage active" data-stage="2">
+                            <div class="stage-icon"><i class="fas fa-filter"></i></div>
+                            <div class="stage-label">Offer Filtering</div>
+                            <div class="stage-status">Complete</div>
+                        </div>
+                        <div class="algo-stage active" data-stage="3">
+                            <div class="stage-icon"><i class="fas fa-sort-amount-up"></i></div>
+                            <div class="stage-label">VIP Bonus Ranking</div>
+                            <div class="stage-status">Complete</div>
+                        </div>
+                        <div class="algo-stage active" data-stage="4">
+                            <div class="stage-icon"><i class="fas fa-check-double"></i></div>
+                            <div class="stage-label">Verification</div>
+                            <div class="stage-status">Complete</div>
+                        </div>
+                    </div>
+                    <div class="analysis-result">
+                        <div class="result-text" id="analysisResult">Premium VIP offers optimized for high-rollers - Ready to display</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="offer-filters">
+                <div class="filter-heading">
+                    <i class="fas fa-crown"></i>
+                    <span>Browse Elite Casino Offers</span>
+                </div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">
+                        <i class="fas fa-star"></i>All Premium Offers
+                    </button>
+                    <button class="filter-btn" data-filter="no-deposit">
+                        <i class="fas fa-gift"></i>Exclusive No Deposit
+                    </button>
+                    <button class="filter-btn" data-filter="free-spins">
+                        <i class="fas fa-sync"></i>Luxury Free Spins
+                    </button>
+                    <button class="filter-btn" data-filter="welcome">
+                        <i class="fas fa-gem"></i>High-Roller Welcome
+                    </button>
+                </div>
+            </div>
             
             <div class="offers-grid" id="topOffersGrid">
                 <!-- Offers will be populated by JavaScript -->
@@ -140,11 +239,11 @@
     <section class="newsletter">
         <div class="container">
             <div class="newsletter-content">
-                <h3>Join Our VIP Mailing List</h3>
+                <h3>Join Our Sovereign Club</h3>
                 <p>Subscribe to receive exclusive high-roller offers, early access to new promotions, and personalized bonus recommendations tailored to your preferences.</p>
                 <form id="newsletterForm">
                     <input type="email" placeholder="Your email address" required>
-                    <button type="submit" class="btn primary">Get Exclusive Offers</button>
+                    <button type="submit" class="btn primary"><i class="fas fa-lock"></i> Get Exclusive Offers</button>
                 </form>
             </div>
         </div>
@@ -212,9 +311,13 @@
             <div class="footer-content">
                 <div class="footer-logo">
                     <div class="logo">
-                        <span class="casino-text">Elite</span>
-                        <span class="bonus-text">Casino</span>
-                        <span class="finder-text">Offers</span>
+                        <div class="logo-emblem">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <div class="logo-text">
+                            <span class="logo-primary">SOVEREIGN</span>
+                            <span class="logo-secondary">STAKES</span>
+                        </div>
                     </div>
                     <p>Your trusted resource for premium casino offers and high-roller bonus opportunities.</p>
                 </div>
@@ -254,7 +357,7 @@
             
             <div class="footer-bottom">
                 <p class="disclaimer">Gambling involves risk and should be approached as entertainment for adults 21 years or older. We only recommend licensed casinos with proven fair gaming practices. Please play responsibly.</p>
-                <p class="copyright">&copy; 2024 Elite Casino Offers. All rights reserved.</p>
+                <p class="copyright">&copy; 2024 Sovereign Stakes. All rights reserved.</p>
             </div>
         </div>
     </footer>
