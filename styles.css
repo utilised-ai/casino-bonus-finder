@@ -117,7 +117,7 @@ header {
 .hero {
     padding: 150px 20px;
     text-align: center;
-    background: url('https://images.unsplash.com/photo-1596838132731-3301c3fd4466?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+    background: var(--blue-gradient);
     position: relative;
     background-attachment: fixed;
 }
@@ -1123,7 +1123,6 @@ header {
     padding: 35px;
     position: relative;
     overflow: hidden;
-    transform: translateZ(0);
 }
 
 .algorithm-visualization::before {
@@ -1236,6 +1235,7 @@ header {
     display: flex;
     justify-content: space-around;
     margin-bottom: 35px;
+    gap: 20px;
 }
 
 .metric {
@@ -1244,10 +1244,8 @@ header {
     background: linear-gradient(145deg, rgba(28, 44, 76, 0.3), rgba(6, 10, 16, 0.6));
     border-radius: 12px;
     border: 1px solid rgba(229, 196, 99, 0.2);
-    min-width: 150px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-    position: relative;
-    overflow: hidden;
+    min-width: 200px;
+    flex: 1;
 }
 
 .metric::before {
