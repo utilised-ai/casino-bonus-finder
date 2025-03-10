@@ -169,7 +169,9 @@ header {
     padding: 15px 20px;
     border-radius: 50px;
     border: 1px solid rgba(229, 196, 99, 0.2);
-    display: inline-flex;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
     gap: 20px;
     box-shadow: var(--premium-shadow);
@@ -1819,16 +1821,36 @@ footer {
 
 @media (max-width: 768px) {
     .hero {
-        padding: 60px 20px;
+        padding: 80px 20px;
+        background-attachment: scroll; /* Better mobile performance */
     }
     
     .hero h1 {
         font-size: 3rem;
+        letter-spacing: 1px;
+    }
+    
+    .hero p {
+        font-size: 1.1rem;
+        max-width: 550px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .main-nav {
+        padding: 10px 0;
     }
     
     .main-nav ul {
         justify-content: center;
         flex-wrap: wrap;
+        gap: 15px 25px;
+        padding: 0 10px;
+    }
+    
+    .main-nav a {
+        font-size: 0.9rem;
+        padding: 6px 4px;
     }
     
     .cta-buttons {
@@ -1905,15 +1927,66 @@ footer {
     .offer-card.trending::after {
         display: none;
     }
+    
+    .featured-casinos {
+        padding: 15px;
+        gap: 15px;
+        width: 100%;
+        margin-top: 40px;
+        border-radius: 30px;
+    }
+    
+    .casino-logos {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px 25px;
+    }
+    
+    .top-bar-content {
+        flex-direction: column;
+        gap: 15px;
+        padding: 5px 0;
+    }
+    
+    .top-links {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .top-links a {
+        font-size: 0.85rem;
+    }
+    
+    .container {
+        padding: 0 20px;
+    }
+    
+    section {
+        padding: 60px 0;
+    }
+    
+    .section-intro {
+        margin-bottom: 30px;
+        font-size: 1rem;
+    }
 }
 
 @media (max-width: 480px) {
+    .hero {
+        padding: 60px 15px;
+    }
+    
     .hero h1 {
         font-size: 2.5rem;
+        letter-spacing: 0.5px;
+        margin-bottom: 15px;
     }
     
     .hero p {
         font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 25px;
     }
     
     .section-header h2 {
@@ -1995,6 +2068,66 @@ footer {
     
     .offer-card.trending::after {
         display: none;
+    }
+    
+    .featured-casinos {
+        padding: 12px;
+        flex-direction: column;
+        gap: 10px;
+        border-radius: 25px;
+        margin-top: 30px;
+    }
+    
+    .casino-logos {
+        width: 100%;
+        justify-content: space-around;
+        gap: 12px;
+    }
+    
+    .casino-logo-item {
+        font-size: 0.85rem;
+    }
+    
+    .casino-logo-item:not(:last-child):after {
+        right: -10px;
+    }
+    
+    .top-bar {
+        padding: 8px 0;
+    }
+    
+    .top-links {
+        gap: 10px;
+    }
+    
+    .top-links a {
+        font-size: 0.8rem;
+        padding: 3px 8px;
+    }
+    
+    .main-nav {
+        padding: 8px 0;
+    }
+    
+    .main-nav ul {
+        gap: 10px 15px;
+    }
+    
+    .main-nav a {
+        font-size: 0.8rem;
+        padding: 5px 3px;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+    
+    section {
+        padding: 40px 0;
+    }
+    
+    .offers-section {
+        padding: 60px 0;
     }
 }
 
