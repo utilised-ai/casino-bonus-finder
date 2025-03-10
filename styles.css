@@ -1,23 +1,23 @@
-/* Casino Bonus Finder - Main Stylesheet */
+/* Casino Bonus Finder - Main Stylesheet - Premium Edition */
 
 /* ========== Base Styles ========== */
 :root {
-    /* Main Colors */
-    --primary-color: #e91e63;
-    --secondary-color: #2e7d32;
-    --accent-color: #ffb300;
-    --dark-bg: #1a1a2e;
-    --darker-bg: #151528;
-    --light-text: #f5f5f5;
-    --muted-text: #b0b0b0;
+    /* Luxurious Color Palette */
+    --primary-color: #b8860b; /* Dark goldenrod */
+    --secondary-color: #1e3a5f; /* Deep navy blue */
+    --accent-color: #d4af37; /* Metallic gold */
+    --dark-bg: #0f1620; /* Deep rich dark blue */
+    --darker-bg: #080d14; /* Even darker blue */
+    --light-text: #f9f9f9; /* Almost white */
+    --muted-text: #c5c5c5; /* Light silver */
     
-    /* Casino Theme Colors */
-    --casino-red: #e3342f;
-    --casino-gold: #f6b93b;
-    --casino-black: #0a0a0a;
-    --casino-green: #38c172;
-    --casino-blue: #3490dc;
-    --casino-purple: #9561e2;
+    /* Premium Casino Theme Colors */
+    --casino-red: #9e1a1a; /* Rich burgundy */
+    --casino-gold: #d4af37; /* Metallic gold */
+    --casino-black: #000000; /* True black */
+    --casino-green: #1a472a; /* Deep emerald */
+    --casino-blue: #1e3a5f; /* Deep navy */
+    --casino-purple: #4b2e83; /* Royal purple */
 }
 
 * {
@@ -33,11 +33,13 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     position: relative;
+    letter-spacing: 0.3px;
 }
 
 h1, h2, h3, h4 {
     font-family: 'Playfair Display', serif;
     font-weight: 700;
+    letter-spacing: 0.5px;
 }
 
 .container {
@@ -55,9 +57,9 @@ header {
 }
 
 .hero {
-    padding: 120px 20px;
+    padding: 150px 20px;
     text-align: center;
-    background-image: url('https://images.unsplash.com/photo-1607456634350-3d7a87140b6f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1789&q=80');
+    background-image: url('https://images.unsplash.com/photo-1596838132731-3301c3fd4466?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
     background-size: cover;
     background-position: center;
     position: relative;
@@ -70,7 +72,7 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(10, 10, 25, 0.8);
+    background: rgba(8, 13, 20, 0.85);
 }
 
 .hero > * {
@@ -82,17 +84,17 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     position: relative;
 }
 
 .logo {
     font-size: 42px;
     font-weight: 700;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
     margin-bottom: 10px;
-    background: linear-gradient(45deg, var(--casino-red), var(--casino-gold));
+    background: linear-gradient(45deg, var(--accent-color), #fff8e7);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -100,50 +102,53 @@ header {
 }
 
 .casino-text {
-    color: var(--casino-red);
-}
-
-.bonus-text {
     color: var(--casino-gold);
 }
 
+.bonus-text {
+    color: var(--light-text);
+}
+
 .finder-text {
-    color: var(--casino-blue);
+    color: var(--accent-color);
 }
 
 .hero h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
+    font-size: 3.5rem;
+    margin-bottom: 25px;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    line-height: 1.2;
 }
 
 .hero p {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     margin-bottom: 40px;
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
+    color: var(--muted-text);
 }
 
 .cta-buttons {
     display: flex;
     gap: 20px;
     justify-content: center;
-    margin-top: 40px;
+    margin-top: 50px;
 }
 
 .btn {
     display: inline-block;
-    padding: 15px 30px;
-    border-radius: 50px;
+    padding: 16px 32px;
+    border-radius: 4px;
     font-weight: 600;
     text-decoration: none;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
     z-index: 1;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .btn::before {
@@ -153,7 +158,7 @@ header {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
     transition: all 0.4s ease;
     z-index: -1;
 }
@@ -163,26 +168,28 @@ header {
 }
 
 .btn.primary {
-    background-color: var(--primary-color);
-    color: white;
-    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.4);
+    background-color: var(--accent-color);
+    color: var(--darker-bg);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    border: 1px solid var(--accent-color);
 }
 
 .btn.secondary {
     background-color: transparent;
-    color: white;
-    border: 2px solid var(--accent-color);
-    box-shadow: 0 4px 15px rgba(255, 179, 0, 0.2);
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.1);
 }
 
 .btn.primary:hover {
-    box-shadow: 0 7px 20px rgba(233, 30, 99, 0.6);
+    box-shadow: 0 7px 20px rgba(212, 175, 55, 0.4);
     transform: translateY(-3px);
+    background-color: #e6c44d;
 }
 
 .btn.secondary:hover {
-    background-color: var(--accent-color);
-    box-shadow: 0 7px 20px rgba(255, 179, 0, 0.4);
+    background-color: rgba(212, 175, 55, 0.1);
+    box-shadow: 0 7px 20px rgba(212, 175, 55, 0.2);
     transform: translateY(-3px);
 }
 
@@ -198,29 +205,32 @@ header {
 
 .chip {
     position: absolute;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     opacity: 0.8;
-    animation: float 8s infinite ease-in-out;
+    animation: float 10s infinite ease-in-out;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    background-image: radial-gradient(circle at center, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0.1) 100%);
+    border: 3px solid rgba(255, 255, 255, 0.3);
 }
 
 .chip1 {
-    background: var(--casino-red);
+    background: var(--casino-gold);
     top: 20%;
     left: 30%;
     animation-delay: 0s;
 }
 
 .chip2 {
-    background: var(--casino-gold);
+    background: var(--casino-blue);
     top: 30%;
     right: 35%;
     animation-delay: 2s;
 }
 
 .chip3 {
-    background: var(--casino-blue);
+    background: var(--casino-purple);
     top: 15%;
     right: 20%;
     animation-delay: 4s;
@@ -248,16 +258,19 @@ header {
 
 .floating-chip {
     position: absolute;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    opacity: 0.15;
+    opacity: 0.08;
     filter: blur(1px);
     animation: floatAround 15s infinite linear;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    background-image: radial-gradient(circle at center, rgba(255, 255, 255, 0.5) 0%, rgba(0, 0, 0, 0.2) 100%);
+    border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .fc1 {
-    background: var(--casino-red);
+    background: var(--casino-gold);
     top: 20%;
     left: 10%;
     animation-delay: 0s;
@@ -289,7 +302,7 @@ header {
 }
 
 .fc5 {
-    background: var(--casino-purple);
+    background: var(--casino-gold);
     top: 25%;
     left: 85%;
     animation-delay: 3s;
@@ -315,11 +328,11 @@ header {
 .main-nav {
     background-color: var(--darker-bg);
     padding: 15px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .main-nav ul {
@@ -330,13 +343,15 @@ header {
 }
 
 .main-nav a {
-    color: var(--light-text);
+    color: var(--muted-text);
     text-decoration: none;
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     padding: 10px 5px;
     position: relative;
     transition: all 0.3s ease;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
 }
 
 .main-nav a::after {
@@ -346,12 +361,12 @@ header {
     left: 0;
     width: 0;
     height: 2px;
-    background-color: var(--primary-color);
+    background-color: var(--accent-color);
     transition: width 0.3s ease;
 }
 
 .main-nav a:hover {
-    color: var(--primary-color);
+    color: var(--accent-color);
 }
 
 .main-nav a:hover::after {
@@ -360,7 +375,7 @@ header {
 
 /* ========== Features Section ========== */
 .features {
-    padding: 60px 0;
+    padding: 80px 0;
     background-color: var(--darker-bg);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -368,28 +383,30 @@ header {
 .features .container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
+    gap: 40px;
 }
 
 .feature {
     text-align: center;
-    padding: 30px 20px;
-    border-radius: 15px;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
+    padding: 35px 25px;
+    border-radius: 8px;
+    background: rgba(30, 58, 95, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(212, 175, 55, 0.05);
 }
 
 .feature:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(212, 175, 55, 0.1);
 }
 
 .feature-icon {
     font-size: 2.5rem;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     color: var(--accent-color);
-    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    background: linear-gradient(45deg, var(--accent-color), #f5deb3);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -407,7 +424,7 @@ header {
 
 /* ========== Offers Sections ========== */
 .offers-section {
-    padding: 80px 0;
+    padding: 100px 0;
     position: relative;
 }
 
@@ -423,7 +440,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
     gap: 20px;
 }
 
@@ -433,6 +450,7 @@ header {
     background-color: var(--accent-color);
     border-radius: 5px;
     position: relative;
+    box-shadow: 0 2px 10px rgba(212, 175, 55, 0.2);
 }
 
 .dice-decoration::before,
@@ -458,38 +476,43 @@ header {
 }
 
 .section-header h2 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     color: var(--light-text);
     position: relative;
     text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 .section-intro {
     text-align: center;
     max-width: 800px;
-    margin: 0 auto 50px;
+    margin: 0 auto 70px;
     color: var(--muted-text);
     font-size: 1.1rem;
+    line-height: 1.8;
 }
 
 .offers-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 40px;
 }
 
 .offer-card {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-    border-radius: 15px;
+    background: linear-gradient(135deg, rgba(30, 58, 95, 0.3), rgba(8, 13, 20, 0.9));
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
     transition: all 0.3s ease;
     position: relative;
+    border: 1px solid rgba(212, 175, 55, 0.05);
 }
 
 .offer-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(212, 175, 55, 0.15);
 }
 
 .offer-card::before {
@@ -499,12 +522,27 @@ header {
     left: 0;
     width: 100%;
     height: 5px;
-    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    background: linear-gradient(90deg, var(--accent-color), var(--casino-gold));
+}
+
+.offer-card.trending::after {
+    content: 'HOT OFFER';
+    position: absolute;
+    top: 20px;
+    right: -35px;
+    background-color: var(--casino-red);
+    color: white;
+    padding: 5px 40px;
+    transform: rotate(45deg);
+    font-size: 0.8rem;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 10;
 }
 
 .card-header {
-    padding: 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     display: flex;
     align-items: center;
 }
@@ -515,11 +553,14 @@ header {
     border-radius: 10px;
     margin-right: 15px;
     object-fit: cover;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .card-title h3 {
-    font-size: 1.3rem;
-    margin-bottom: 5px;
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+    color: var(--light-text);
 }
 
 .card-title .rating {
@@ -530,48 +571,54 @@ header {
 }
 
 .card-body {
-    padding: 20px;
+    padding: 25px;
 }
 
 .bonus-description {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: 15px;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    line-height: 1.4;
 }
 
 .bonus-details {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .bonus-details li {
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     position: relative;
-    padding-left: 20px;
+    padding-left: 25px;
     list-style: none;
+    color: var(--muted-text);
 }
 
 .bonus-details li::before {
     content: '✓';
     position: absolute;
     left: 0;
-    color: var(--secondary-color);
+    color: var(--accent-color);
+    font-weight: bold;
 }
 
 .card-footer {
-    padding: 20px;
+    padding: 20px 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(212, 175, 55, 0.05);
 }
 
 .promo-code {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(212, 175, 55, 0.1);
     padding: 8px 15px;
-    border-radius: 5px;
+    border-radius: 4px;
     font-family: monospace;
     letter-spacing: 1px;
+    color: var(--light-text);
+    border: 1px solid rgba(212, 175, 55, 0.2);
 }
 
 .link-arrow {
@@ -579,10 +626,107 @@ header {
     color: var(--accent-color);
 }
 
+.offer-updated {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(212, 175, 55, 0.2);
+    color: var(--accent-color);
+    font-size: 0.75rem;
+    padding: 3px 8px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.live-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: #4CAF50;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+    }
+    
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 7px rgba(76, 175, 80, 0);
+    }
+    
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+    }
+}
+
+.search-animation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.search-bar {
+    width: 60%;
+    max-width: 600px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.search-icon {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    margin-right: 15px;
+}
+
+.search-text {
+    flex: 1;
+    color: var(--light-text);
+    font-size: 1.1rem;
+    text-align: left;
+    padding-right: 20px;
+}
+
+.search-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background-color: var(--accent-color);
+    animation: searchProgress 3s infinite;
+}
+
+@keyframes searchProgress {
+    0% {
+        width: 0;
+    }
+    50% {
+        width: 70%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
 /* ========== Newsletter Section ========== */
 .newsletter {
-    padding: 80px 0;
-    background: linear-gradient(135deg, var(--primary-color), var(--casino-purple));
+    padding: 100px 0;
+    background: linear-gradient(135deg, var(--secondary-color), var(--darker-bg));
     position: relative;
     overflow: hidden;
 }
@@ -594,10 +738,10 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('https://images.unsplash.com/photo-1621266876872-c355f1e61e3c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1789&q=80');
+    background-image: url('https://images.unsplash.com/photo-1600456899121-68eda5705257?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
     background-size: cover;
     background-position: center;
-    opacity: 0.15;
+    opacity: 0.08;
 }
 
 .newsletter-content {
@@ -610,19 +754,20 @@ header {
 
 .newsletter h3 {
     font-size: 2.5rem;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     color: white;
 }
 
 .newsletter p {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     color: rgba(255, 255, 255, 0.9);
     font-size: 1.1rem;
+    line-height: 1.8;
 }
 
 .newsletter form {
     display: flex;
-    gap: 10px;
+    gap: 15px;
     max-width: 500px;
     margin: 0 auto;
 }
@@ -630,10 +775,12 @@ header {
 .newsletter input {
     flex: 1;
     padding: 15px 20px;
-    border-radius: 50px;
-    border: none;
+    border-radius: 4px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
     font-size: 1rem;
     outline: none;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--light-text);
 }
 
 .newsletter button {
@@ -644,81 +791,93 @@ header {
 
 /* ========== Reviews Section ========== */
 .reviews-section {
-    padding: 80px 0;
+    padding: 100px 0;
 }
 
 .reviews-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 30px;
+    gap: 40px;
 }
 
 .review-card {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 15px;
+    background: rgba(30, 58, 95, 0.1);
+    border-radius: 8px;
     overflow: hidden;
     transition: all 0.3s ease;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(212, 175, 55, 0.05);
 }
 
 .review-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(212, 175, 55, 0.15);
 }
 
 .review-header {
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.2);
+    padding: 25px;
+    background-color: rgba(0, 0, 0, 0.3);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
 }
 
 .review-header h3 {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
 }
 
 .review-score {
-    background-color: var(--secondary-color);
-    color: white;
+    background-color: var(--accent-color);
+    color: var(--darker-bg);
     font-weight: 700;
-    padding: 5px 10px;
-    border-radius: 5px;
+    padding: 5px 12px;
+    border-radius: 4px;
 }
 
 .review-content {
-    padding: 20px;
+    padding: 25px;
 }
 
 .review-badges {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .badge {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(212, 175, 55, 0.1);
     padding: 5px 15px;
     border-radius: 20px;
     font-size: 0.9rem;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    color: var(--accent-color);
 }
 
 .review-highlights {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .review-highlights h4 {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     font-size: 1.1rem;
+    color: var(--light-text);
+}
+
+.review-highlights p {
+    color: var(--muted-text);
+    line-height: 1.8;
 }
 
 .review-footer {
-    padding: 15px 20px;
+    padding: 20px 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(212, 175, 55, 0.05);
 }
 
 .review-link {
@@ -729,51 +888,54 @@ header {
 
 /* ========== FAQ Section ========== */
 .faq {
-    padding: 80px 0;
+    padding: 100px 0;
     background-color: var(--darker-bg);
 }
 
 .faq-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-    gap: 30px;
+    gap: 40px;
 }
 
 .faq-item {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 15px;
+    background: rgba(30, 58, 95, 0.1);
+    border-radius: 8px;
     padding: 30px;
     transition: all 0.3s ease;
+    border: 1px solid rgba(212, 175, 55, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .faq-item:hover {
-    background: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    background: rgba(30, 58, 95, 0.15);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(212, 175, 55, 0.15);
 }
 
 .faq-item h3 {
     font-size: 1.3rem;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     color: var(--accent-color);
 }
 
 .faq-item p {
     color: var(--muted-text);
-    line-height: 1.7;
+    line-height: 1.8;
 }
 
 /* ========== Footer ========== */
 footer {
     background-color: var(--darker-bg);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 60px 0 20px;
+    border-top: 1px solid rgba(212, 175, 55, 0.1);
+    padding: 80px 0 30px;
 }
 
 .footer-content {
     display: flex;
     flex-wrap: wrap;
-    gap: 40px;
-    margin-bottom: 40px;
+    gap: 60px;
+    margin-bottom: 60px;
 }
 
 .footer-logo {
@@ -788,13 +950,14 @@ footer {
 .footer-logo p {
     color: var(--muted-text);
     max-width: 300px;
+    line-height: 1.8;
 }
 
 .footer-links {
     flex: 1 1 500px;
     display: flex;
     flex-wrap: wrap;
-    gap: 40px;
+    gap: 60px;
 }
 
 .footer-column {
@@ -803,8 +966,20 @@ footer {
 
 .footer-column h4 {
     font-size: 1.2rem;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     color: var(--light-text);
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.footer-column h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: var(--accent-color);
 }
 
 .footer-column ul {
@@ -812,29 +987,41 @@ footer {
 }
 
 .footer-column li {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .footer-column a {
     color: var(--muted-text);
     text-decoration: none;
     transition: color 0.3s ease;
+    position: relative;
+    padding-left: 15px;
+}
+
+.footer-column a::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
 }
 
 .footer-column a:hover {
-    color: var(--primary-color);
+    color: var(--accent-color);
 }
 
 .footer-bottom {
     text-align: center;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 30px;
+    border-top: 1px solid rgba(212, 175, 55, 0.05);
 }
 
 .disclaimer {
     color: var(--muted-text);
     font-size: 0.9rem;
     margin-bottom: 15px;
+    max-width: 800px;
+    margin: 0 auto 20px;
+    line-height: 1.8;
 }
 
 .copyright {
@@ -845,15 +1032,15 @@ footer {
 /* ========== Responsive Styles ========== */
 @media (max-width: 1024px) {
     .hero h1 {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
     }
     
     .section-header h2 {
-        font-size: 2rem;
+        font-size: 2.4rem;
     }
     
     .newsletter h3 {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
     
     .faq-grid {
@@ -863,11 +1050,11 @@ footer {
 
 @media (max-width: 768px) {
     .hero {
-        padding: 80px 20px;
+        padding: 100px 20px;
     }
     
     .hero h1 {
-        font-size: 2rem;
+        font-size: 2.3rem;
     }
     
     .main-nav ul {
@@ -895,17 +1082,21 @@ footer {
     
     .footer-content {
         flex-direction: column;
-        gap: 30px;
+        gap: 40px;
     }
     
     .footer-links {
-        gap: 20px;
+        gap: 30px;
+    }
+
+    .search-bar {
+        width: 90%;
     }
 }
 
 @media (max-width: 480px) {
     .hero h1 {
-        font-size: 1.8rem;
+        font-size: 1.9rem;
     }
     
     .hero p {
@@ -913,14 +1104,18 @@ footer {
     }
     
     .section-header h2 {
-        font-size: 1.8rem;
+        font-size: 2rem;
     }
     
     .feature {
-        padding: 20px 15px;
+        padding: 25px 20px;
     }
     
     .footer-column {
         flex: 1 1 100%;
+    }
+
+    .search-text {
+        font-size: 0.9rem;
     }
 } 

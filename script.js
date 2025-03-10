@@ -1,6 +1,9 @@
-// Casino Bonus Finder - Main JavaScript
+// Casino Bonus Finder - Premium Edition JavaScript
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Add the search animation to top-offers section
+    addSearchAnimation();
+    
     // Initialize the casino offers data
     initCasinoData();
     
@@ -9,7 +12,60 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Animation effects
     initAnimations();
+    
+    // Start the offer update simulation
+    simulateOfferUpdates();
 });
+
+// Add search animation to show actively finding offers
+function addSearchAnimation() {
+    const topOffersSection = document.getElementById('top-offers');
+    if (!topOffersSection) return;
+    
+    const container = topOffersSection.querySelector('.container');
+    if (!container) return;
+    
+    const sectionIntro = container.querySelector('.section-intro');
+    
+    const searchAnimationDiv = document.createElement('div');
+    searchAnimationDiv.className = 'search-animation';
+    searchAnimationDiv.innerHTML = `
+        <div class="search-bar">
+            <div class="search-icon">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="search-text">Finding the best casino offers for high rollers...</div>
+            <div class="search-progress"></div>
+        </div>
+    `;
+    
+    container.insertBefore(searchAnimationDiv, sectionIntro.nextSibling);
+    
+    // Start the search animation cycle
+    setTimeout(() => {
+        updateSearchText('Analyzing bonus terms and conditions...');
+    }, 3000);
+    
+    setTimeout(() => {
+        updateSearchText('Verifying wagering requirements...');
+    }, 6000);
+    
+    setTimeout(() => {
+        updateSearchText('Sorting by exclusive VIP bonuses...');
+    }, 9000);
+    
+    setTimeout(() => {
+        updateSearchText('Deals updated! Showing latest luxury casino offers.');
+    }, 12000);
+}
+
+// Update the search text in the animation
+function updateSearchText(text) {
+    const searchText = document.querySelector('.search-text');
+    if (searchText) {
+        searchText.textContent = text;
+    }
+}
 
 // Setup event listeners for interactive elements
 function setupEventListeners() {
@@ -21,7 +77,7 @@ function setupEventListeners() {
             const emailInput = this.querySelector('input[type="email"]');
             if (emailInput && emailInput.value) {
                 // In a real site, this would send the email to a server
-                alert(`Thank you for subscribing with ${emailInput.value}! You'll receive the best casino offers in your inbox.`);
+                alert(`Thank you for subscribing with ${emailInput.value}! We'll send you exclusive premium casino offers.`);
                 emailInput.value = '';
             }
         });
@@ -38,6 +94,23 @@ function setupEventListeners() {
             const casinoName = this.querySelector('.card-title h3').textContent;
             console.log(`Casino card clicked: ${casinoName}`);
             // In a real implementation, this would track analytics
+        });
+    });
+    
+    // Create copy functionality for promo codes
+    document.querySelectorAll('.promo-code').forEach(codeElement => {
+        codeElement.style.cursor = 'pointer';
+        codeElement.title = 'Click to copy';
+        
+        codeElement.addEventListener('click', function() {
+            const text = this.textContent;
+            navigator.clipboard.writeText(text.replace('Code: ', '')).then(() => {
+                const originalText = this.textContent;
+                this.textContent = 'Copied!';
+                setTimeout(() => {
+                    this.textContent = originalText;
+                }, 1500);
+            });
         });
     });
 }
@@ -69,6 +142,132 @@ function initAnimations() {
         el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
         observer.observe(el);
     });
+    
+    // Add shine effect to premium elements
+    addShineEffect('.btn.primary');
+    addShineEffect('.casino-logo');
+}
+
+// Add shine effect to premium elements
+function addShineEffect(selector) {
+    const elements = document.querySelectorAll(selector);
+    
+    elements.forEach(element => {
+        element.addEventListener('mouseover', function() {
+            this.style.position = 'relative';
+            this.style.overflow = 'hidden';
+            
+            const shine = document.createElement('div');
+            shine.style.position = 'absolute';
+            shine.style.top = '0';
+            shine.style.left = '-100%';
+            shine.style.width = '50%';
+            shine.style.height = '100%';
+            shine.style.background = 'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%)';
+            shine.style.transform = 'skewX(-25deg)';
+            shine.style.transition = 'left 0.7s ease-in-out';
+            shine.style.zIndex = '1';
+            
+            this.appendChild(shine);
+            
+            setTimeout(() => {
+                shine.style.left = '150%';
+            }, 100);
+            
+            setTimeout(() => {
+                this.removeChild(shine);
+            }, 800);
+        });
+    });
+}
+
+// Simulate offer updates to create the impression of live updating
+function simulateOfferUpdates() {
+    // Get all offer cards
+    const offerCards = document.querySelectorAll('.offer-card');
+    
+    // Exit if no cards are found
+    if (offerCards.length === 0) return;
+    
+    // Mark some offers as trending/hot
+    markTrendingOffers(offerCards);
+    
+    // Add update timestamps to each card
+    addUpdateTimestamps(offerCards);
+    
+    // Simulate periodic updates
+    setInterval(() => {
+        // Select a random card to "update"
+        const randomIndex = Math.floor(Math.random() * offerCards.length);
+        const randomCard = offerCards[randomIndex];
+        
+        // Flash the card to show it's being updated
+        randomCard.style.transition = 'box-shadow 0.5s ease';
+        randomCard.style.boxShadow = '0 0 25px rgba(212, 175, 55, 0.6)';
+        
+        // Update the timestamp
+        const timestampEl = randomCard.querySelector('.offer-updated');
+        if (timestampEl) {
+            timestampEl.innerHTML = `<span class="live-dot"></span> Just updated`;
+            
+            // Reset the shadow after a brief moment
+            setTimeout(() => {
+                randomCard.style.boxShadow = '';
+                
+                // Then update the timestamp text
+                setTimeout(() => {
+                    timestampEl.innerHTML = `<span class="live-dot"></span> Updated just now`;
+                }, 2000);
+            }, 800);
+        }
+    }, 45000); // Update a random card every 45 seconds
+}
+
+// Mark some offers as trending/hot
+function markTrendingOffers(offerCards) {
+    // Select 30% of cards at random to mark as trending
+    const numTrending = Math.ceil(offerCards.length * 0.3);
+    const cardIndices = Array.from({ length: offerCards.length }, (_, i) => i);
+    
+    // Shuffle the array to randomly select cards
+    for (let i = cardIndices.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [cardIndices[i], cardIndices[j]] = [cardIndices[j], cardIndices[i]];
+    }
+    
+    // Mark the selected cards as trending
+    for (let i = 0; i < numTrending; i++) {
+        offerCards[cardIndices[i]].classList.add('trending');
+    }
+}
+
+// Add update timestamps to each card
+function addUpdateTimestamps(offerCards) {
+    offerCards.forEach((card, index) => {
+        // Create timestamps with varying times
+        const timestamp = document.createElement('div');
+        timestamp.className = 'offer-updated';
+        
+        // Distribute timestamps for visual variety
+        if (index % 5 === 0) {
+            timestamp.innerHTML = `<span class="live-dot"></span> Just updated`;
+        } else if (index % 5 === 1) {
+            timestamp.innerHTML = `<span class="live-dot"></span> Updated 2h ago`;
+        } else if (index % 5 === 2) {
+            timestamp.innerHTML = `<span class="live-dot"></span> Updated today`;
+        } else if (index % 5 === 3) {
+            timestamp.innerHTML = `<span class="live-dot"></span> Updated 1d ago`;
+        } else {
+            timestamp.innerHTML = `<span class="live-dot"></span> Updated 2d ago`;
+        }
+        
+        // Add to the card header
+        const cardHeader = card.querySelector('.card-header');
+        if (cardHeader) {
+            cardHeader.style.position = 'relative';
+            cardHeader.appendChild(timestamp);
+        }
+    });
 }
 
 // Casino offers data
@@ -84,9 +283,9 @@ function initCasinoData() {
                 "No deposit bonus of $25 just for signing up",
                 "100% match up to $1,500 on first deposit",
                 "Wagering requirement: 15x on deposit match, 1x on no deposit bonus",
-                "Available in MI, NJ, PA & WV"
+                "VIP service for high-roller accounts"
             ],
-            promoCode: "GDC1500",
+            promoCode: "PREMIUM1500",
             link: "#"
         },
         {
@@ -97,10 +296,10 @@ function initCasinoData() {
             details: [
                 "Generous match percentage on first deposit",
                 "One of the highest maximum bonus amounts available",
-                "Access to exclusive Caesars Rewards",
-                "Easy-to-navigate platform"
+                "Access to exclusive Caesars Rewards Diamond status",
+                "Personal VIP host for high-value players"
             ],
-            promoCode: "GAMBLING2500",
+            promoCode: "LUXURYPLAY",
             link: "#"
         },
         {
@@ -110,11 +309,11 @@ function initCasinoData() {
             description: "100% Deposit Match up to $1,000 & 500 Free Spins",
             details: [
                 "Free spins distributed as 50 per day for 10 days",
-                "Free spins valid on select slot games",
-                "Good mix of deposit bonus and free spins",
-                "Available in New Jersey only"
+                "Free spins valid on premium slot games",
+                "Exclusive high-stakes table games access",
+                "VIP events and promotions for qualified players"
             ],
-            promoCode: "ROCKON",
+            promoCode: "VIPROCK",
             link: "#"
         },
         {
@@ -123,12 +322,12 @@ function initCasinoData() {
             rating: 4.6,
             description: "50% Deposit Match Up to $1,000 + 20 Bonus Spins",
             details: [
-                "Ideal for mobile users with excellent app",
-                "Bonus spins on popular slot titles",
+                "Ideal for mobile users with premium app experience",
+                "Bonus spins on exclusive high-value slot titles",
                 "Lower wagering requirements than competitors",
-                "Regular promotions for existing players"
+                "Regular promotions for high-roller players"
             ],
-            promoCode: "JACKPOT50",
+            promoCode: "HIGHROLLER50",
             link: "#"
         },
         {
@@ -138,11 +337,11 @@ function initCasinoData() {
             description: "10 Days of Spins (NJ) / 100% Up To $500 & 100 Spins (PA)",
             details: [
                 "Different offers depending on your state",
-                "Great for testing games with free spins",
-                "Established international brand",
-                "Clean, user-friendly interface"
+                "Premium slots with higher RTP for VIP members",
+                "Established international brand with strong reputation",
+                "Sophisticated user interface with premium design"
             ],
-            promoCode: "SPIN365",
+            promoCode: "ELITESPIN",
             link: "#"
         }
     ];
@@ -158,9 +357,9 @@ function initCasinoData() {
                 "No deposit required to claim",
                 "1x wagering requirement",
                 "Available in MI, NJ, PA & WV",
-                "Must be 21+ to claim"
+                "VIP-specific no deposit bonuses available"
             ],
-            promoCode: "GDC1500",
+            promoCode: "PREMIUM25",
             link: "#"
         },
         {
@@ -171,10 +370,10 @@ function initCasinoData() {
             details: [
                 "Free $20 bonus just for signing up",
                 "1x wagering requirement",
-                "User-friendly platform",
-                "Wide variety of casino games available"
+                "Luxury casino experience for high rollers",
+                "Private tables and premium support"
             ],
-            promoCode: "BORG20",
+            promoCode: "LUXE20",
             link: "#"
         },
         {
@@ -184,11 +383,11 @@ function initCasinoData() {
             description: "20 Free Spins",
             details: [
                 "No deposit needed to claim free spins",
-                "Spins available on select popular slot games",
+                "Spins available on selected premium slot games",
                 "Connected to Caesars Rewards program",
-                "User-friendly mobile app"
+                "Fast-track to higher tier status for VIPs"
             ],
-            promoCode: "SPIN20",
+            promoCode: "VIPSPIN20",
             link: "#"
         },
         {
@@ -199,8 +398,8 @@ function initCasinoData() {
             details: [
                 "Register and verify email to claim",
                 "Additional 1,500 GC and 0.2 SC daily on login",
-                "Play without making a deposit",
-                "900+ games available to play"
+                "VIP lounge with enhanced redemption rates",
+                "900+ premium games available to play"
             ],
             promoCode: "Not required",
             link: "#"
@@ -211,12 +410,12 @@ function initCasinoData() {
             rating: 4.3,
             description: "30 Free Spins on Book of Dead",
             details: [
-                "Free spins upon registration",
-                "Popular Book of Dead slot game",
+                "Free spins upon registration for premium members",
+                "Popular Book of Dead slot game with high RTP",
                 "No deposit required",
-                "Reasonable wagering requirements"
+                "Exclusive VIP tournaments available"
             ],
-            promoCode: "WRC30",
+            promoCode: "ROYALSPINS",
             link: "#"
         }
     ];
@@ -229,12 +428,12 @@ function initCasinoData() {
             rating: 4.7,
             description: "500 Free Spins + 100% up to $1,000",
             details: [
-                "50 free spins daily for 10 days",
-                "Spins valid on popular slot games",
+                "50 premium free spins daily for 10 days",
+                "Spins valid on high RTP slot games",
                 "Generous deposit match alongside spins",
-                "Available in New Jersey"
+                "High roller tables with increased limits"
             ],
-            promoCode: "ROCKON",
+            promoCode: "VIPROCK",
             link: "#"
         },
         {
@@ -243,12 +442,12 @@ function initCasinoData() {
             rating: 4.5,
             description: "20 Free Spins No Deposit",
             details: [
-                "No deposit required for free spins",
-                "Valid on selected slot games",
-                "Connect to Caesars Rewards program",
-                "Additional deposit bonuses available"
+                "No deposit required for premium free spins",
+                "Valid on selected high-value slot games",
+                "Connect to Caesars Rewards VIP program",
+                "Higher conversion rate for VIP members"
             ],
-            promoCode: "SPIN20",
+            promoCode: "ELITESPIN",
             link: "#"
         },
         {
@@ -257,12 +456,12 @@ function initCasinoData() {
             rating: 4.4,
             description: "20 Free Spins on Viking Victory",
             details: [
-                "Free spins on sign up",
-                "No deposit required",
+                "Premium free spins on sign up",
+                "No deposit required for elite members",
                 "200% welcome bonus available after deposit",
-                "Bonus up to $2,000 on first deposit"
+                "Bonus up to $2,000 on first deposit for high rollers"
             ],
-            promoCode: "Not required",
+            promoCode: "LUXESPIN",
             link: "#"
         },
         {
@@ -271,12 +470,12 @@ function initCasinoData() {
             rating: 4.3,
             description: "57,500 Gold Coins + 27.5 FREE SC",
             details: [
-                "Social casino with free play options",
-                "No deposit required for initial coins",
-                "Regular promotions for additional free coins",
-                "Available on desktop and mobile"
+                "Premium social casino with exclusive offerings",
+                "No deposit required for initial premium coins",
+                "VIP-only promotions and exclusive tournaments",
+                "Luxurious mobile experience with high-end graphics"
             ],
-            promoCode: "WSNLUCK",
+            promoCode: "PREMIUM27",
             link: "#"
         },
         {
@@ -285,12 +484,12 @@ function initCasinoData() {
             rating: 4.6,
             description: "25 Stake Cash + 250,000 Gold Coins",
             details: [
-                "Popular sweepstakes casino",
-                "No purchase necessary",
-                "Cryptocurrency-friendly",
-                "Available in most US states"
+                "Premium sweepstakes casino for sophisticated players",
+                "No purchase necessary with exclusive VIP offers",
+                "Cryptocurrency-friendly with enhanced security",
+                "Available in most US states with premium support"
             ],
-            promoCode: "WSN",
+            promoCode: "VIPSTAKE",
             link: "#"
         }
     ];
@@ -303,12 +502,12 @@ function initCasinoData() {
             rating: 4.8,
             description: "100% Deposit Match up to $2,500",
             details: [
-                "One of the highest bonus amounts available",
-                "User-friendly platform with wide game selection",
-                "Access to Caesars Rewards program",
-                "Compatible with desktop and mobile"
+                "Highest bonus amount available for elite players",
+                "Sophisticated platform with premium game selection",
+                "Access to Caesars Rewards Diamond status",
+                "VIP hosts for high-roller accounts"
             ],
-            promoCode: "GAMBLING2500",
+            promoCode: "LUXURYPLAY",
             link: "#"
         },
         {
@@ -317,12 +516,12 @@ function initCasinoData() {
             rating: 4.9,
             description: "100% Deposit Match up to $1,500 + $25 No Deposit",
             details: [
-                "Dual bonus offering with no deposit bonus",
+                "Dual premium bonus offering with no deposit bonus",
                 "Reasonable 15x wagering on deposit match",
-                "Wide variety of games to use bonus on",
-                "Top-rated casino platform"
+                "Exclusive high-limit games for VIP members",
+                "Personalized account manager for high rollers"
             ],
-            promoCode: "GDC1500",
+            promoCode: "PREMIUM1500",
             link: "#"
         },
         {
@@ -331,12 +530,12 @@ function initCasinoData() {
             rating: 4.6,
             description: "50% Deposit Match Up to $1,000 + 20 Bonus Spins",
             details: [
-                "Ideal for mobile casino players",
-                "Great slot selection for bonus spins",
-                "Established international brand",
-                "Regular promotions for returning players"
+                "Ideal for luxury mobile casino players",
+                "Exclusive slot selection for high-value members",
+                "Established international brand with VIP services",
+                "Premium promotions for high-volume players"
             ],
-            promoCode: "JACKPOT50",
+            promoCode: "HIGHROLLER50",
             link: "#"
         },
         {
@@ -345,12 +544,12 @@ function initCasinoData() {
             rating: 4.3,
             description: "150% More Coins on First Purchase + Spin to Win",
             details: [
-                "First purchase bonus with 150% extra coins",
-                "Opportunity to win up to 100SC and 2M CC",
-                "Social casino format with prizes",
-                "Large selection of games"
+                "Elite first purchase bonus with 150% extra coins",
+                "Opportunity to win up to 100SC and 2M CC for VIPs",
+                "Social casino with exclusive luxury prizes",
+                "Large selection of premium games with high RTP"
             ],
-            promoCode: "Not required",
+            promoCode: "VIPCC150",
             link: "#"
         },
         {
@@ -359,12 +558,12 @@ function initCasinoData() {
             rating: 4.5,
             description: "50% Extra on Your First Purchase + 3 SC & 500 GC Free",
             details: [
-                "Free coins without purchase",
-                "50% extra on first purchase",
-                "Sweepstakes model with real prizes",
-                "User-friendly interface"
+                "Premium coins without purchase for elite members",
+                "50% extra on first purchase with VIP boosts",
+                "Sweepstakes model with high-value prizes",
+                "Sophisticated interface for discerning players"
             ],
-            promoCode: "Not required",
+            promoCode: "LUXELEGENDZ",
             link: "#"
         }
     ];
@@ -374,32 +573,32 @@ function initCasinoData() {
         {
             name: "BetMGM Casino",
             score: 9.4,
-            badges: ["Top Rated", "Best Bonuses", "Fast Payouts"],
-            highlights: "BetMGM offers an impressive game library with over 700 titles, including exclusive games you won't find elsewhere. Their customer service is available 24/7, and withdrawals are processed within 24 hours."
+            badges: ["Elite Choice", "Premium Bonuses", "VIP Service"],
+            highlights: "BetMGM offers an impressive premium game library with over 700 titles, including exclusive games only available to VIP players. Their personalized customer service is available 24/7, and withdrawals for VIP members are processed within 12 hours."
         },
         {
             name: "Caesars Palace Casino",
             score: 9.2,
-            badges: ["Exclusive Offers", "VIP Program", "Live Dealer"],
-            highlights: "Caesars stands out with its excellent VIP program and connection to the famous Caesars Rewards. Their selection of live dealer games is among the best in the US market, and they offer fast payouts to most payment methods."
+            badges: ["Luxury Experience", "Elite VIP Program", "Premium Live Dealer"],
+            highlights: "Caesars stands out with its exceptional VIP program and connection to the prestigious Caesars Rewards Diamond tier. Their selection of high-stakes live dealer games is unmatched in the US market, and they offer priority payouts to high-roller members."
         },
         {
             name: "Hard Rock Bet Casino",
             score: 9.0,
-            badges: ["Best for Slots", "Mobile Friendly", "Regular Promotions"],
-            highlights: "Hard Rock Bet features an incredible collection of slot games with various themes and progressive jackpots. Their mobile app provides a seamless experience, and they frequently run promotions for existing players."
+            badges: ["Exclusive Slots", "VIP Mobile Experience", "Premium Promotions"],
+            highlights: "Hard Rock Bet features a curated collection of premium slot games with high-value jackpots. Their sophisticated mobile app delivers a seamless high-end experience, and they regularly offer exclusive promotions for VIP players."
         },
         {
             name: "Jackpot City Casino",
             score: 8.9,
-            badges: ["Mobile Excellence", "Fast Withdrawals", "Great Game Variety"],
-            highlights: "Jackpot City is perfect for mobile users with an app that works flawlessly on both iOS and Android. They offer a wide range of payment methods, and their game library includes titles from top developers like NetEnt and Microgaming."
+            badges: ["Premium Mobile", "Priority Withdrawals", "Exclusive Game Library"],
+            highlights: "Jackpot City is perfect for discerning mobile users with an elite app experience on both iOS and Android. They offer expedited payment processing for high-value members, and their premium game library includes exclusive titles from top developers."
         },
         {
             name: "Bet365 Casino",
             score: 8.7,
-            badges: ["Trusted Brand", "Sports & Casino", "24/7 Support"],
-            highlights: "Bet365 combines sports betting and casino gaming in one platform, making it convenient for players who enjoy both. Their customer support team is highly responsive, and the platform has a reputation for fair play and reliability."
+            badges: ["Prestigious Brand", "Comprehensive Luxury Platform", "24/7 VIP Support"],
+            highlights: "Bet365 combines sports betting and casino gaming in one sophisticated platform, catering to discerning players who enjoy both. Their dedicated VIP support team is highly responsive, and the platform has earned a reputation for fair play and elite service."
         }
     ];
 
@@ -443,7 +642,7 @@ function renderOffers(containerId, offersData) {
                 <ul class="bonus-details">
                     ${offer.details.map(detail => `<li>${detail}</li>`).join('')}
                 </ul>
-                <a href="${offer.link}" class="btn primary">Claim Bonus</a>
+                <a href="${offer.link}" class="btn primary">Claim Premium Bonus</a>
             </div>
             <div class="card-footer">
                 <div class="promo-code">Code: ${offer.promoCode}</div>
@@ -476,13 +675,13 @@ function renderReviews(containerId, reviewsData) {
                     ${review.badges.map(badge => `<span class="badge">${badge}</span>`).join('')}
                 </div>
                 <div class="review-highlights">
-                    <h4>Highlights</h4>
+                    <h4>Premium Highlights</h4>
                     <p>${review.highlights}</p>
                 </div>
             </div>
             <div class="review-footer">
-                <a href="#" class="review-link">Read Full Review</a>
-                <a href="#" class="btn primary">Visit Casino</a>
+                <a href="#" class="review-link">Read Full VIP Review</a>
+                <a href="#" class="btn primary">Visit Elite Casino</a>
             </div>
         `;
         
